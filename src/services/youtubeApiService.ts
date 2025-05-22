@@ -108,20 +108,17 @@ export async function fetchChatMessages(apiKey: string, liveChatId: string, page
   }
 
   const url = `${YOUTUBE_API_BASE_URL}/liveChat/messages?${params.toString()}`;
-  console.log(`[youtubeApiService] Fetching URL: ${url}`);
 
   try {
     const response = await fetch(url);
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({ message: response.statusText }));
-      console.error(`[youtubeApiService] Error fetching messages. Status: ${response.status}, Data:`, errorData, `URL: ${url}`);
-      // Se for erro de chat desabilitado ou não encontrado, pode ser útil tratar especificamente
+      
       if (response.status === 403 || response.status === 404) {
         const errorReason = errorData.error?.errors?.[0]?.reason;
         if (errorReason === 'liveChatDisabled' || errorReason === 'liveChatNotFound') {
           console.warn(`Chat ao vivo desabilitado ou não encontrado para o ID: ${liveChatId}`);
-          // Poderíamos retornar um objeto indicando isso para o hook tratar (ex: parar polling)
-          return { messages: [], nextPageToken: null, pollingIntervalMillis: 60000, chatDisabled: true }; // Satisfaz FetchChatMessagesResult
+          return { messages: [], nextPageToken: null, pollingIntervalMillis: 60000, chatDisabled: true };
         }
       }
       return null;

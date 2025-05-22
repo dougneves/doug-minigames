@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import './index.scss';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import YoutubeChatLoop from "./components/YoutubeChatLoop";
+import "./index.scss";
+import reportWebVitals from "./reportWebVitals";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error("Failed to find the root element");
 }
@@ -13,6 +14,7 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
+    <YoutubeChatLoop />
     <BrowserRouter basename="/doug-minigames">
       <App />
     </BrowserRouter>
