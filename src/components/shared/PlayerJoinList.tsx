@@ -6,6 +6,8 @@ interface PlayerJoinListProps {
   players: JoinedPlayer[];
   title?: string;
   waitingMessage?: string;
+  onPlayerSelect?: (player: JoinedPlayer) => void;
+  selectedPlayerId?: string | null;
 }
 
 const DEFAULT_TITLE = "Quem quer jogar? Digite o comando no chat!";
@@ -15,6 +17,8 @@ const PlayerJoinList: React.FC<PlayerJoinListProps> = ({
   players,
   title = DEFAULT_TITLE,
   waitingMessage = DEFAULT_WAITING_MESSAGE,
+  onPlayerSelect,
+  selectedPlayerId,
 }) => {
   return (
     <div className="player-join-list-container"> {/* Alterado de opponent-selection-area para ser mais genérico */}
@@ -22,7 +26,11 @@ const PlayerJoinList: React.FC<PlayerJoinListProps> = ({
       {players.length === 0 && <p>{waitingMessage}</p>}
       <ul className="player-list"> {/* Alterado de opponent-list */}
         {players.map((player) => (
-          <li key={player.channelId} className="player-item"> {/* Alterado de opponent-item */}
+          <li 
+            key={player.channelId} 
+            className={`player-item ${player.channelId === selectedPlayerId ? 'selected' : ''} ${onPlayerSelect ? 'selectable' : ''}`}
+            onClick={() => onPlayerSelect && onPlayerSelect(player)}
+          > {/* Alterado de opponent-item */}
             <img
               src={player.profileImageUrl}
               alt={player.displayName}

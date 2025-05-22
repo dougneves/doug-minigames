@@ -1,27 +1,256 @@
 .very-eggs-container {
   display: flex;
-  height: calc(100vh - 100px); // Ajustar conforme necessário, considerando header/footer
   padding: 20px;
   gap: 20px;
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  max-width: 95%;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
   .game-area {
     flex: 3;
-    background-color: #f0f0f0;
     padding: 20px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
 
-    // A área de seleção de oponentes/jogadores agora é gerenciada pelo componente PlayerJoinList
-    // e seus estilos estão em PlayerJoinList.scss.
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .player-join-list {
+      margin-bottom: 20px;
+    }
+
+    .start-game-button, .action-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin: 5px;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+
+      &:hover {
+        background-color: #45a049;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+    // .action-button inherits styles from the combined rule above.
+    // Specific overrides can be added here if needed in the future.
+
+    .game-in-progress-area {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 6px;
+
+      h3 {
+        margin-top: 0;
+        color: #333;
+        text-align: center;
+      }
+
+      .player-display-container {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+
+        .player-area {
+          flex: 1;
+          padding: 15px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          text-align: center;
+          background-color: #f9f9f9;
+
+          h4 {
+            margin-top: 0;
+            color: #555;
+          }
+
+          .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: #777;
+          }
+
+          .viewer-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 10px auto;
+            object-fit: cover;
+            border: 2px solid #ddd;
+          }
+
+          .lives-display span {
+            font-size: 1.5em;
+            margin: 0 2px;
+          }
+        }
+      }
+
+      .game-message {
+        background-color: #e7f3fe;
+        border-left: 6px solid #2196F3;
+        padding: 10px;
+        margin: 15px 0;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .game-over-message {
+        background-color: #ffcdd2;
+        border-left: 6px solid #f44336;
+        padding: 15px;
+        margin: 20px 0;
+        text-align: center;
+        border-radius: 4px;
+
+        h4 {
+          margin-top: 0;
+          color: #d32f2f;
+        }
+      }
+
+      .turn-info, .egg-counts, .eggs-display-area, .streamer-actions, .viewer-instructions {
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 4px;
+      }
+
+      .egg-counts p, .turn-info p {
+         margin: 5px 0;
+      }
+      
+      .turn-info p {
+        font-size: 1.1em;
+      }
+
+      .egg-counts .count-display {
+        font-weight: bold;
+        background-color: #e0e0e0;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      .eggs-display-area {
+        .egg-queue {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+        }
+        .egg-item {
+          padding: 8px 12px;
+          background-color: #fffacd;
+          border: 1px solid #f0e68c;
+          border-radius: 20px;
+          font-size: 0.9em;
+
+          &.next-egg {
+            border-color: #ff4500;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .streamer-actions button,
+      .viewer-instructions ul {
+        margin-top: 10px;
+      }
+
+      .viewer-instructions ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .viewer-instructions li {
+        background-color: #eef;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+      }
+
+      .viewer-instructions code {
+        background-color: #dcdcdc;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+
+      .target-selection-area {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+
+        h4 {
+          margin-top: 0;
+          margin-bottom: 10px;
+          color: #212529;
+        }
+
+        button {
+          margin-right: 10px;
+          padding: 8px 12px;
+          font-size: 0.9em;
+          color: #fff;
+          background-color: #007bff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.2s ease-in-out;
+
+          &:hover {
+            background-color: #0056b3;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
   }
 
   .chat-area {
     flex: 1;
-    // O ChatDisplay já tem seu próprio styling e altura definida
-    // Podemos adicionar um container se precisarmos de mais controle aqui
     display: flex;
     flex-direction: column;
-    min-width: 300px; // Garante que o chat não fique muito espremido
+    min-width: 300px;
+
+    .chat-display-container {
+        height: 300px;
+        border: 1px solid #ccc;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #fff;
+        margin-top: 20px;
+    }
   }
 }

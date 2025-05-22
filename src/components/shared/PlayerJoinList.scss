@@ -26,9 +26,22 @@
       align-items: center;
       padding: 8px;
       border-bottom: 1px solid #eee;
+      transition: background-color 0.2s ease-in-out; // Para uma transição suave
 
       &:last-child {
         border-bottom: none;
+      }
+
+      &.selectable {
+        cursor: pointer;
+        &:hover {
+          background-color: #f0f0f0; // Um leve destaque no hover para itens selecionáveis
+        }
+      }
+
+      &.selected {
+        background-color: #e0e0ff; // Cor de destaque para o item selecionado
+        font-weight: bold;
       }
 
       .player-avatar {
@@ -39,7 +52,7 @@
       }
 
       .player-name {
-        font-weight: bold;
+        // font-weight: bold; // Removido daqui, será aplicado pelo .selected se necessário
         color: #555;
       }
     }
