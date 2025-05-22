@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/doug-minigames/static/css/main.f855e6bc.css",
-    "main.js": "/doug-minigames/static/js/main.12870638.js",
+    "main.css": "/doug-minigames/static/css/main.8846f29c.css",
+    "main.js": "/doug-minigames/static/js/main.7914f3b7.js",
     "static/js/453.d8db28b7.chunk.js": "/doug-minigames/static/js/453.d8db28b7.chunk.js",
-    "static/media/logo.svg": "/doug-minigames/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/doug-minigames/index.html",
-    "main.f855e6bc.css.map": "/doug-minigames/static/css/main.f855e6bc.css.map",
-    "main.12870638.js.map": "/doug-minigames/static/js/main.12870638.js.map",
+    "main.8846f29c.css.map": "/doug-minigames/static/css/main.8846f29c.css.map",
+    "main.7914f3b7.js.map": "/doug-minigames/static/js/main.7914f3b7.js.map",
     "453.d8db28b7.chunk.js.map": "/doug-minigames/static/js/453.d8db28b7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.12870638.js"
+    "static/css/main.8846f29c.css",
+    "static/js/main.7914f3b7.js"
   ]
 }
